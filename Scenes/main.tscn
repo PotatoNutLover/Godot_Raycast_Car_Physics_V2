@@ -2,11 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://cc2187lko3dn4" path="res://checkboard.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cl1fh7ga7037l" path="res://RaycastCar/car.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://clyiiu7sfsc7y" path="res://Scenes/car_ui.gd" id="3_8gbba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
 albedo_color = Color(0.30967695, 0.54615545, 0.44952953, 1)
 albedo_texture = ExtResource("1_jjgbg")
 uv1_triplanar = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_uj0h6"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_3q60g"]
+font_size = 28
 
 [node name="Main" type="Node3D" unique_id=1961429027]
 
@@ -19,11 +26,34 @@ material = SubResource("StandardMaterial3D_7u77a")
 
 [node name="Car" parent="." unique_id=33558669 instance=ExtResource("2_bo1nx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09646773, 3.772681, 0.089957476)
-air_resistance_coef = 0.45
-car_mass = 1200.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1938912669]
 transform = Transform3D(-0.008344751, -0.23104282, 0.97290784, -0.00198161, 0.9729436, 0.23103434, -0.9999632, 0, -0.0085768085, 2.7609093, 1.345855, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1542059891]
 transform = Transform3D(0.956023, 0.079726264, 0.28224766, -0.29329172, 0.25987825, 0.9200235, 0, -0.9623445, 0.27183264, 0, 10.119255, 0)
+
+[node name="CarUI" type="CanvasLayer" parent="." unique_id=2083465712]
+unique_name_in_owner = true
+script = ExtResource("3_8gbba")
+
+[node name="LabelCurrentGear" type="Label" parent="CarUI" unique_id=2112096089]
+offset_right = 268.0
+offset_bottom = 39.0
+text = "Current gear: "
+label_settings = SubResource("LabelSettings_uj0h6")
+
+[node name="LabelCurrentRPM" type="Label" parent="CarUI" unique_id=1902593015]
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 270.0
+offset_bottom = 83.0
+text = "Current RPM: "
+label_settings = SubResource("LabelSettings_3q60g")
+
+[node name="ProgressBarCurrentRPM" type="ProgressBar" parent="CarUI" unique_id=1451431182]
+offset_left = 3.0
+offset_top = 91.0
+offset_right = 238.0
+offset_bottom = 133.0
+show_percentage = false
