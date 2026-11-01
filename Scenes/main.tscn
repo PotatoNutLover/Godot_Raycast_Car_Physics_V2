@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dhfikb1yktlex"]
+
+[ext_resource type="Texture2D" uid="uid://cc2187lko3dn4" path="res://checkboard.png" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cl1fh7ga7037l" path="res://RaycastCar/car.tscn" id="2_bo1nx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
+albedo_color = Color(0.30967695, 0.54615545, 0.44952953, 1)
+albedo_texture = ExtResource("1_jjgbg")
+uv1_triplanar = true
+
+[node name="Main" type="Node3D" unique_id=1961429027]
+
+[node name="Ground" type="CSGCombiner3D" parent="." unique_id=1491968958]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground" unique_id=211707006]
+size = Vector3(200, 1, 200)
+material = SubResource("StandardMaterial3D_7u77a")
+
+[node name="Car" parent="." unique_id=33558669 instance=ExtResource("2_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09646773, 3.772681, 0.089957476)
+air_resistance_coef = 0.45
+car_mass = 1200.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1938912669]
+transform = Transform3D(-0.008344751, -0.23104282, 0.97290784, -0.00198161, 0.9729436, 0.23103434, -0.9999632, 0, -0.0085768085, 2.7609093, 1.345855, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1542059891]
+transform = Transform3D(0.956023, 0.079726264, 0.28224766, -0.29329172, 0.25987825, 0.9200235, 0, -0.9623445, 0.27183264, 0, 10.119255, 0)
