@@ -40,8 +40,22 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"meshes": {
+"Plane_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "res://RaycastCar/Models/Plane_001.res",
+"save_to_file/path": "uid://cyn2h5827g7e7"
+}
+},
 "nodes": {
 "PATH:Body": {
+"decomposition/precision": 4,
+"generate/physics": true,
+"physics/body_type": 1,
 "physics/shape_type": 0
 }
 }

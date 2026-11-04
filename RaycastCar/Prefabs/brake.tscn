@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://brja6np7fssag"]
+
+[ext_resource type="Script" uid="uid://quyt6f7707l3" path="res://RaycastCar/Scripts/Brake.gd" id="1_q754o"]
+[ext_resource type="Texture2D" uid="uid://cc2187lko3dn4" path="res://checkboard.png" id="2_14bm6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uj0h6"]
+top_radius = 0.075
+bottom_radius = 0.075
+height = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmp38"]
+albedo_color = Color(0.55739737, 0.57819563, 0.57818866, 1)
+albedo_texture = ExtResource("2_14bm6")
+emission_enabled = true
+emission = Color(1, 0.43333334, 0, 1)
+emission_energy_multiplier = 0.0
+uv1_triplanar = true
+
+[node name="Brake" type="Node3D" unique_id=603665377]
+script = ExtResource("1_q754o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1574523510]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_uj0h6")
+surface_material_override/0 = SubResource("StandardMaterial3D_mmp38")

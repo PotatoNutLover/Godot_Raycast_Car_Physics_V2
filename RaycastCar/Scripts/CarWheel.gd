@@ -16,6 +16,7 @@ var suspension_compression_speed: float = 0.0
 
 var is_grounded: bool = false
 var wheel_mesh: Node3D
+var car_brake: CarBrake
 
 var _suspension_force: float = 0.0
 var _remaining_suspension_len: float = 0.0
@@ -25,6 +26,7 @@ func _ready() -> void:
 	suspension_current_len = suspension_rest_len
 	suspension_prev_len = suspension_current_len
 	wheel_mesh = get_child(0)
+	car_brake = get_child(1)
 
 func calculate_suspension_force(contact_point: Vector3, delta: float) -> float:
 	suspension_current_len = global_position.distance_to(contact_point)
@@ -51,4 +53,6 @@ func update_wheel_visual(delta: float, forward_vel: float) -> void:
 			5.0 * delta
 			)	
 	wheel_mesh.rotate_x(-forward_vel / wheel_radius * delta)
-		
+
+func get_brake_force(velocity_forward: float, delta: float) -> float:
+	return car_brake.get_brake_force(velocity_forward, delta)

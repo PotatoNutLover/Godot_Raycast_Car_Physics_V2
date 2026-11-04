@@ -91,9 +91,8 @@ func _physics_process(delta: float) -> void:
 			
 func calculate_force_per_tire(engine_force: float, brake_force: float, suspension_force: float, v_forward: float, v_lat: float, wheel: CarWheel) -> Vector3:
 	engine_force = engine_force * _throttle_input
-	#if _brake_input != 0:
-		#engine_force = 0
-		
+	if _brake_input != 0:
+		engine_force = 0
 	var rolling_resisnance: float = rolling_resistance_coef * v_forward
 	#brake_force = brake_force * _brake_input * sign(v_forward)
 	brake_force = brake_force * _brake_input * clamp(v_forward / 0.3, -1.0, 1.0)
@@ -104,7 +103,7 @@ func calculate_force_per_tire(engine_force: float, brake_force: float, suspensio
 			
 	var force_max = wheel.surface_viscosity * suspension_force
 	var force_lat: float = -v_lat * wheel.cornering_stiffness * wheel.surface_traction# можно моделировать в зависимости от покрытия (меньше - скольжение, больше - удержание)
-			
+			# traction 0.05
 	
 	
 	var force_tire_desired = force_forward * -wheel.global_basis.z + force_lat * wheel.global_basis.x

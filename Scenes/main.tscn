@@ -37,9 +37,9 @@ size = Vector3(3.434082, 3.0508423, 5.9312134)
 material = SubResource("StandardMaterial3D_uj0h6")
 
 [node name="Ramp2" type="CSGBox3D" parent="Ground" unique_id=1285694419]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.17258596, -1.644073, -0.0101718)
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.17258596, -1.5896327, -0.010171798)
 visible = false
-size = Vector3(1.9347534, 0.9397621, 4.605957)
+size = Vector3(1.9347534, 0.9397621, 4.7148376)
 material = SubResource("StandardMaterial3D_uj0h6")
 
 [node name="Car" parent="." unique_id=33558669 instance=ExtResource("2_bo1nx")]
