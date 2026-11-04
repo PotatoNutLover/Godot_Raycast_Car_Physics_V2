@@ -6,6 +6,7 @@ extends Node
 @export var shift_duration: float = 0.15
 @export_range(0.0, 1.0, 0.01) var efficiency_factor: float = 0.9
 @export var start_gear_index = 1
+@export var neutral_gear_index = 1
 
 var current_gear: int = 0
 var shift_timer: float = 0.0

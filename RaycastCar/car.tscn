@@ -5,17 +5,17 @@
 [ext_resource type="Script" uid="uid://dtnv10thy0ej2" path="res://RaycastCar/Scripts/CarEngine.gd" id="2_5dsb1"]
 [ext_resource type="Script" uid="uid://g4y5u0r2se5h" path="res://RaycastCar/Scripts/CarWheel.gd" id="2_hnaeu"]
 [ext_resource type="PackedScene" uid="uid://cjbwl58tm1kkv" path="res://RaycastCar/Models/vaz-2101_wheel.fbx" id="2_xy0t8"]
+[ext_resource type="Script" uid="uid://bcyfkyncleltj" path="res://RaycastCar/CarSystems.gd" id="2_y02qq"]
 [ext_resource type="Script" uid="uid://cg5sk5yf2idm0" path="res://RaycastCar/СarTransmission.gd" id="3_ib6if"]
 
 [sub_resource type="Curve" id="Curve_ib6if"]
 _data = [Vector2(0, 0.50335574), 0.0, 0.0, 0, 0, Vector2(0.6952909, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4673913), -3.3630438, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uj0h6"]
-size = Vector3(1.1, 0.762, 2.99)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3q60g"]
+size = Vector3(1, 0.8150635, 2.5699768)
 
 [node name="Car" type="RigidBody3D" unique_id=33558669]
-mass = 1200.0
 center_of_mass_mode = 1
 linear_damp = 0.1
 angular_damp = 1.5
@@ -23,6 +23,7 @@ script = ExtResource("1_fi3hg")
 
 [node name="CarSystems" type="Node" parent="." unique_id=1529828351]
 unique_name_in_owner = true
+script = ExtResource("2_y02qq")
 
 [node name="CarEngine" type="Node" parent="CarSystems" unique_id=1354201253]
 unique_name_in_owner = true
@@ -30,33 +31,42 @@ script = ExtResource("2_5dsb1")
 rpm_accel_free = 6.0
 rpm_deccel_free = 800.0
 torque_curve = SubResource("Curve_ib6if")
+body_torque_amount = 0.1
 
 [node name="CarTransmission" type="Node" parent="CarSystems" unique_id=195416333]
 unique_name_in_owner = true
 script = ExtResource("3_ib6if")
 
-[node name="vaz-2101" parent="." unique_id=1619221849 instance=ExtResource("1_jp1i1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=643781679]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56117684, 0.00819397)
+shape = SubResource("BoxShape3D_3q60g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=655850491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5341396, -0.017028809)
-shape = SubResource("BoxShape3D_uj0h6")
+[node name="CarBody" type="Node3D" parent="." unique_id=563185013]
+unique_name_in_owner = true
+
+[node name="vaz-2101" parent="CarBody" unique_id=1658444066 instance=ExtResource("1_jp1i1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="COM" type="Marker3D" parent="." unique_id=1219855609]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6479071, -0.27147985)
+
+[node name="COM_air" type="Marker3D" parent="." unique_id=51907761]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2010588, 0.13525757)
 
 [node name="Wheels" type="Node3D" parent="." unique_id=1355436079]
 unique_name_in_owner = true
 
 [node name="Wheel_FL" type="RayCast3D" parent="Wheels" unique_id=2132687944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44163394, 0.35474297, -1.0657092)
-target_position = Vector3(0, -0.4, 0)
+target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
 is_traction = true
 is_steering = true
 wheel_radius = 0.211
-suspension_rest_len = 0.4
+suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
 
@@ -64,11 +74,11 @@ spring_force = 40000.0
 
 [node name="Wheel_RL" type="RayCast3D" parent="Wheels" unique_id=1259052274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44163394, 0.35474297, 0.72324884)
-target_position = Vector3(0, -0.4, 0)
+target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
 is_traction = true
 wheel_radius = 0.211
-suspension_rest_len = 0.4
+suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
 
@@ -76,12 +86,12 @@ spring_force = 40000.0
 
 [node name="Wheel_FR" type="RayCast3D" parent="Wheels" unique_id=931816180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, -1.0657092)
-target_position = Vector3(0, -0.4, 0)
+target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
 is_traction = true
 is_steering = true
 wheel_radius = 0.211
-suspension_rest_len = 0.4
+suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
 
@@ -89,11 +99,11 @@ spring_force = 40000.0
 
 [node name="Wheel_RR" type="RayCast3D" parent="Wheels" unique_id=869956851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, 0.72324884)
-target_position = Vector3(0, -0.4, 0)
+target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
 is_traction = true
 wheel_radius = 0.211
-suspension_rest_len = 0.4
+suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
 

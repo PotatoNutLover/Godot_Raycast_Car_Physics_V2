@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://crvs022wsfemd"]
+
+[ext_resource type="PackedScene" uid="uid://dkpstt30t5d71" path="res://RaycastCar/Models/vaz-2101.fbx" id="1_cy54k"]
+
+[node name="vaz-2101" unique_id=705768520 instance=ExtResource("1_cy54k")]

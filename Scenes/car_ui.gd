@@ -12,5 +12,5 @@ func set_gear_label(gear: String) -> void:
 func set_rpm_label(rpm: float) -> void:
 	rpm_label.text = "Current RPM: %s" % str(int(rpm))
 	
-func set_rpm_progress_bar(rpm: float) -> void:
-	rpm_progress_bar.value = rpm / 7000 * 100
+func set_rpm_progress_bar(rpm: float, max_rpm: float) -> void:
+	rpm_progress_bar.value = rpm / max_rpm * 100

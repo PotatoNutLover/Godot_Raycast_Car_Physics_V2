@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://dhfikb1yktlex"]
 
 [ext_resource type="Texture2D" uid="uid://cc2187lko3dn4" path="res://checkboard.png" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://d1wq4nptsgevd" path="res://Scenes/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cl1fh7ga7037l" path="res://RaycastCar/car.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://clyiiu7sfsc7y" path="res://Scenes/car_ui.gd" id="3_8gbba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
 albedo_color = Color(0.30967695, 0.54615545, 0.44952953, 1)
+albedo_texture = ExtResource("1_jjgbg")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj0h6"]
+albedo_color = Color(0.28425056, 0.57993263, 0.78821695, 1)
 albedo_texture = ExtResource("1_jjgbg")
 uv1_triplanar = true
 
@@ -16,6 +22,7 @@ font_size = 28
 font_size = 28
 
 [node name="Main" type="Node3D" unique_id=1961429027]
+script = ExtResource("1_jjvhh")
 
 [node name="Ground" type="CSGCombiner3D" parent="." unique_id=1491968958]
 use_collision = true
@@ -24,8 +31,19 @@ use_collision = true
 size = Vector3(200, 1, 200)
 material = SubResource("StandardMaterial3D_7u77a")
 
+[node name="Ramp" type="CSGBox3D" parent="Ground" unique_id=1918947240]
+transform = Transform3D(1, 0, 0, 0, 0.97000974, 0.24306676, 0, -0.24306676, 0.97000974, -3.354679, -0.9814448, 1.1286178)
+size = Vector3(3.434082, 3.0508423, 5.9312134)
+material = SubResource("StandardMaterial3D_uj0h6")
+
+[node name="Ramp2" type="CSGBox3D" parent="Ground" unique_id=1285694419]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.17258596, -1.644073, -0.0101718)
+visible = false
+size = Vector3(1.9347534, 0.9397621, 4.605957)
+material = SubResource("StandardMaterial3D_uj0h6")
+
 [node name="Car" parent="." unique_id=33558669 instance=ExtResource("2_bo1nx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09646773, 3.772681, 0.089957476)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09646773, 2.7653291, 0.089957476)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1938912669]
 transform = Transform3D(-0.008344751, -0.23104282, 0.97290784, -0.00198161, 0.9729436, 0.23103434, -0.9999632, 0, -0.0085768085, 2.7609093, 1.345855, 0)
@@ -57,3 +75,5 @@ offset_top = 91.0
 offset_right = 238.0
 offset_bottom = 133.0
 show_percentage = false
+
+[connection signal="shift_changed" from="Car" to="." method="_on_car_shift_changed"]
