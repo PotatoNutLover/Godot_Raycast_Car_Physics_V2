@@ -83,20 +83,22 @@ func _physics_process(delta: float) -> void:
 				suspension_force,
 				velocity_forward,
 				velocity_lat,
-				wheel)
+				wheel,
+				delta)
 			
 			wheel.update_wheel_visual(delta, velocity_forward)
 			apply_force(force_tire, wheel_offset)
 		wheel.update_wheel_visual(delta, 0)
 			
-func calculate_force_per_tire(engine_force: float, brake_force: float, suspension_force: float, v_forward: float, v_lat: float, wheel: CarWheel) -> Vector3:
+func calculate_force_per_tire(engine_force: float, brake_force: float, suspension_force: float, v_forward: float, v_lat: float, wheel: CarWheel, delta: float) -> Vector3:
 	engine_force = engine_force * _throttle_input
 	if _brake_input != 0:
 		engine_force = 0
 	var rolling_resisnance: float = rolling_resistance_coef * v_forward
 	#brake_force = brake_force * _brake_input * sign(v_forward)
-	brake_force = brake_force * _brake_input * clamp(v_forward / 0.3, -1.0, 1.0)
+	#brake_force = brake_force * _brake_input * clamp(v_forward / 0.3, -1.0, 1.0)
 	var force_forward: float = engine_force - rolling_resisnance
+	brake_force = wheel.get_brake_force(v_forward, _brake_input, delta) * clamp(v_forward / 0.3, -1.0, 1.0)
 	if _brake_input > 0:
 		force_forward -= brake_force
 

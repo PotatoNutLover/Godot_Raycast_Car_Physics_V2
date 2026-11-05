@@ -6,6 +6,7 @@ var car_ui: CarUI
 func _ready() -> void:
 	player_car = $Car
 	car_ui = $CarUI
+	%CameraPivot.player_car = player_car
 	
 	var car_info: CarInfo = player_car.get_car_info()
 	car_ui.set_rpm_label(car_info.current_rpm)

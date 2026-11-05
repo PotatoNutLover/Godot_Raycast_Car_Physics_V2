@@ -480,7 +480,7 @@ spring_force = 40000.0
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_FL" unique_id=615996651 instance=ExtResource("2_xy0t8")]
 
-[node name="Brake" parent="Wheels/Wheel_FL" unique_id=603665377 instance=ExtResource("8_o720c")]
+[node name="Brake" parent="Wheels/Wheel_FL/vaz-2101_wheel" unique_id=603665377 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
 
 [node name="Wheel_RL" type="RayCast3D" parent="Wheels" unique_id=1259052274]
@@ -495,7 +495,7 @@ spring_force = 40000.0
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_RL" unique_id=598497092 instance=ExtResource("2_xy0t8")]
 
-[node name="Brake" parent="Wheels/Wheel_RL" unique_id=1292121028 instance=ExtResource("8_o720c")]
+[node name="Brake" parent="Wheels/Wheel_RL/vaz-2101_wheel" unique_id=1292121028 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
 
 [node name="Wheel_FR" type="RayCast3D" parent="Wheels" unique_id=931816180]
@@ -511,8 +511,8 @@ spring_force = 40000.0
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_FR" unique_id=1067980896 instance=ExtResource("2_xy0t8")]
 
-[node name="Brake" parent="Wheels/Wheel_FR" unique_id=483405000 instance=ExtResource("8_o720c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
+[node name="Brake" parent="Wheels/Wheel_FR/vaz-2101_wheel" unique_id=483405000 instance=ExtResource("8_o720c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
 
 [node name="Wheel_RR" type="RayCast3D" parent="Wheels" unique_id=869956851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, 0.72324884)
@@ -526,5 +526,5 @@ spring_force = 40000.0
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_RR" unique_id=1229314473 instance=ExtResource("2_xy0t8")]
 
-[node name="Brake" parent="Wheels/Wheel_RR" unique_id=601870036 instance=ExtResource("8_o720c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
+[node name="Brake" parent="Wheels/Wheel_RR/vaz-2101_wheel" unique_id=601870036 instance=ExtResource("8_o720c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)

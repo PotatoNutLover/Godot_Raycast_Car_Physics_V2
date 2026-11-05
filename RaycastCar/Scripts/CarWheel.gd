@@ -26,10 +26,13 @@ func _ready() -> void:
 	suspension_current_len = suspension_rest_len
 	suspension_prev_len = suspension_current_len
 	wheel_mesh = get_child(0)
-	car_brake = get_child(1)
+	car_brake = $"vaz-2101_wheel/Brake"
 
 func calculate_suspension_force(contact_point: Vector3, delta: float) -> float:
-	suspension_current_len = global_position.distance_to(contact_point)
+	var hit_local = -to_local(contact_point).y
+	suspension_current_len = hit_local
+	#suspension_current_len = global_position.distance_to(contact_point)
+	#print(str(global_position)+"  " + str(contact_point) + " " + str(suspension_current_len))
 	suspension_compression_speed = (suspension_current_len - suspension_prev_len) / delta
 	_remaining_suspension_len = suspension_rest_len + wheel_radius - suspension_current_len
 	_suspension_force = max(
@@ -54,5 +57,5 @@ func update_wheel_visual(delta: float, forward_vel: float) -> void:
 			)	
 	wheel_mesh.rotate_x(-forward_vel / wheel_radius * delta)
 
-func get_brake_force(velocity_forward: float, delta: float) -> float:
-	return car_brake.get_brake_force(velocity_forward, delta)
+func get_brake_force(velocity_forward: float, brake_input: float, delta: float) -> float:
+	return car_brake.get_brake_force(velocity_forward,brake_input, delta)
