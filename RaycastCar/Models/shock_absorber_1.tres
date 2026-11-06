@@ -9,7 +9,6 @@ input_name = "uv"
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bw1gy"]
 parameter_name = "Texture2DParameter"
-texture_type = 1
 texture_filter = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_bw1gy"]

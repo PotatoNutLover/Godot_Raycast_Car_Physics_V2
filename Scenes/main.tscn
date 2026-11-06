@@ -38,9 +38,9 @@ size = Vector3(3.434082, 3.0508423, 5.9312134)
 material = SubResource("StandardMaterial3D_uj0h6")
 
 [node name="Ramp2" type="CSGBox3D" parent="Ground" unique_id=1285694419]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.17258596, -1.5896327, -0.010171798)
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.17258596, -1.4587717, -0.0101717925)
 visible = false
-size = Vector3(1.9347534, 0.9397621, 4.7148376)
+size = Vector3(1.9347534, 0.9397621, 4.9765596)
 material = SubResource("StandardMaterial3D_uj0h6")
 
 [node name="Car" parent="." unique_id=33558669 instance=ExtResource("2_bo1nx")]
@@ -77,11 +77,18 @@ show_percentage = false
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1734664166]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.95071447, 0.31006768, 0, -0.31006768, 0.95071447, 0, 2.7988877, -0.0062168837)
+transform = Transform3D(0.99997556, -0.006981259, 9.702136e-11, 0.005363507, 0.7682534, 0.6401236, -0.004468868, -0.64010787, 0.7682721, 0, 2.7988877, -0.0062168837)
 script = ExtResource("5_kry3j")
+default_pos = Vector3(0, 0.091181755, 3.054597)
+default_rot = Vector3(-39.8, 0, 0)
+option_1_pos = Vector3(0, 0.091181755, 3.054597)
+option_1_rot = Vector3(-18.1, -110, 0)
+option_2_pos = Vector3(0.0067972685, -0.18624973, 1.3526609)
+option_2_rot = Vector3(-16.2, -168.9, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1938912669]
-transform = Transform3D(1, 0, 0, 0, 0.9758635, -0.21838135, 0, 0.21838135, 0.9758635, 0, 0.091181755, 3.054597)
+transform = Transform3D(1.0000001, 7.450581e-09, 4.4703484e-08, 3.7252903e-09, 0.97586375, -0.21838138, -5.9604645e-08, 0.21838135, 0.9758636, 0, 0.091181755, 3.054597)
 fov = 80.0
+near = 0.01
 
 [connection signal="shift_changed" from="Car" to="." method="_on_car_shift_changed"]

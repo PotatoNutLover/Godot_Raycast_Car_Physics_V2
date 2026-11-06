@@ -10,6 +10,7 @@ extends RayCast3D
 @export var cornering_stiffness: float = 15000.0
 @export var surface_viscosity: float = 1.0
 @export var surface_traction: float = 1.0
+@export var _shock_absorber: ShockAbsorber
 var suspension_current_len: float = 0.0
 var suspension_prev_len: float = 0.0
 var suspension_compression_speed: float = 0.0
@@ -21,11 +22,13 @@ var car_brake: CarBrake
 var _suspension_force: float = 0.0
 var _remaining_suspension_len: float = 0.0
 
+
 func _ready() -> void:
 	target_position = Vector3(0, -(suspension_rest_len + wheel_radius), 0)
 	suspension_current_len = suspension_rest_len
 	suspension_prev_len = suspension_current_len
 	wheel_mesh = get_child(0)
+	#_shock_absorber = get_child(1)
 	car_brake = $"vaz-2101_wheel/Brake"
 
 func calculate_suspension_force(contact_point: Vector3, delta: float) -> float:
@@ -56,6 +59,7 @@ func update_wheel_visual(delta: float, forward_vel: float) -> void:
 			5.0 * delta
 			)	
 	wheel_mesh.rotate_x(-forward_vel / wheel_radius * delta)
+	_shock_absorber.set_marker_global_pos(wheel_mesh.global_position)
 
 func get_brake_force(velocity_forward: float, brake_input: float, delta: float) -> float:
 	return car_brake.get_brake_force(velocity_forward,brake_input, delta)

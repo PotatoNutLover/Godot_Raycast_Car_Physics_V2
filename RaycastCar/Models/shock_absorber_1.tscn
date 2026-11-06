@@ -2,16 +2,130 @@
 
 [ext_resource type="PackedScene" uid="uid://cfljv76c5qjym" path="res://RaycastCar/Models/shock_absorber_1.fbx" id="1_6c0t3"]
 [ext_resource type="Script" uid="uid://bc2w5twyixuvd" path="res://RaycastCar/Scripts/shock_absorber.gd" id="1_v18jg"]
-[ext_resource type="Shader" uid="uid://gdfeuvrianc3" path="res://RaycastCar/Models/shock_absorber_1.tres" id="2_v18jg"]
-[ext_resource type="Texture2D" uid="uid://cyofup4157x2m" path="res://RaycastCar/Models/shock_absorber_texture.png" id="3_pujv2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c0t3"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_v18jg"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_pujv2"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_uqsye"]
+parameter_name = "Texture2DParameter"
+texture_filter = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_f60kg"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_jqamd"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_bw7f7"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_oievv"]
+parameter_name = "Base_Deadzone"
+default_value_enabled = true
+default_value = 0.05
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_m8yf2"]
+operator = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_10xkm"]
+operator = 6
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_g4jyj"]
+operator = 3
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ne00m"]
+default_input_values = [0, 1.0, 1, 0.0]
+operator = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_lo6ho"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jp8so"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5ipnw"]
+parameter_name = "Initial_Height"
+default_value_enabled = true
+default_value = 2.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7q53b"]
+parameter_name = "Compression"
+hint = 2
+min = 0.1
+max = 3.0
+step = 0.05
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_pfr5q"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7sdna"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_vhwne"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_vcakb"]
+operator = 1
+
+[sub_resource type="VisualShader" id="VisualShader_wj1oj"]
+preview_params/Initial_Height = "0.0"
+preview_params/Compression = "0.20000000298023"
+preview_params/Base_Deadzone = "0.001"
+nodes/vertex/0/position = Vector2(940, 180)
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_lo6ho")
+nodes/vertex/2/position = Vector2(-2360, -540)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_jp8so")
+nodes/vertex/3/position = Vector2(-1100, 260)
+nodes/vertex/4/node = SubResource("VisualShaderNodeFloatParameter_5ipnw")
+nodes/vertex/4/position = Vector2(-1100, -20)
+nodes/vertex/5/node = SubResource("VisualShaderNodeFloatParameter_7q53b")
+nodes/vertex/5/position = Vector2(-880, 820)
+nodes/vertex/6/node = SubResource("VisualShaderNodeVectorDecompose_pfr5q")
+nodes/vertex/6/position = Vector2(-2040, -540)
+nodes/vertex/7/node = SubResource("VisualShaderNodeFloatOp_7sdna")
+nodes/vertex/7/position = Vector2(-700, -80)
+nodes/vertex/8/node = SubResource("VisualShaderNodeVectorDecompose_vhwne")
+nodes/vertex/8/position = Vector2(-780, 260)
+nodes/vertex/9/node = SubResource("VisualShaderNodeFloatOp_vcakb")
+nodes/vertex/9/position = Vector2(-340, 120)
+nodes/vertex/10/node = SubResource("VisualShaderNodeFloatOp_f60kg")
+nodes/vertex/10/position = Vector2(120, 600)
+nodes/vertex/11/node = SubResource("VisualShaderNodeFloatOp_jqamd")
+nodes/vertex/11/position = Vector2(360, 420)
+nodes/vertex/12/node = SubResource("VisualShaderNodeVectorCompose_bw7f7")
+nodes/vertex/12/position = Vector2(540, 220)
+nodes/vertex/13/node = SubResource("VisualShaderNodeFloatParameter_oievv")
+nodes/vertex/13/position = Vector2(-2220, -220)
+nodes/vertex/14/node = SubResource("VisualShaderNodeFloatOp_m8yf2")
+nodes/vertex/14/position = Vector2(-1700, -360)
+nodes/vertex/15/node = SubResource("VisualShaderNodeFloatOp_10xkm")
+nodes/vertex/15/position = Vector2(-1500, -300)
+nodes/vertex/16/node = SubResource("VisualShaderNodeFloatOp_g4jyj")
+nodes/vertex/16/position = Vector2(-1120, -280)
+nodes/vertex/17/node = SubResource("VisualShaderNodeFloatOp_ne00m")
+nodes/vertex/17/position = Vector2(-1360, -120)
+nodes/vertex/connections = PackedInt32Array(2, 0, 6, 0, 4, 0, 7, 1, 3, 0, 8, 0, 8, 2, 9, 0, 7, 0, 9, 1, 5, 0, 10, 1, 10, 0, 11, 0, 9, 0, 11, 1, 11, 0, 12, 2, 8, 0, 12, 0, 8, 1, 12, 1, 12, 0, 0, 0, 13, 0, 14, 1, 14, 0, 15, 0, 7, 0, 10, 0, 6, 1, 14, 0, 15, 0, 16, 0, 13, 0, 17, 1, 17, 0, 16, 1, 16, 0, 7, 0)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_v18jg")
+nodes/fragment/2/position = Vector2(-280, 260)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_pujv2")
+nodes/fragment/4/position = Vector2(-740, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_uqsye")
+nodes/fragment/5/position = Vector2(-820, 300)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 5, 0, 2, 2, 4, 0, 2, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hguio"]
+load_path = "res://.godot/imported/shock_absorber_texture.png-eadb38a70a16af2ed4543d47525eb2ef.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmvvn"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_v18jg")
+shader = SubResource("VisualShader_wj1oj")
 shader_parameter/Base_Deadzone = 0.05
 shader_parameter/Initial_Height = -0.03
 shader_parameter/Compression = 1.0000000149012
-shader_parameter/Texture2DParameter = ExtResource("3_pujv2")
+shader_parameter/Texture2DParameter = SubResource("CompressedTexture2D_hguio")
 
 [node name="shock_absorber_1" unique_id=208807058 instance=ExtResource("1_6c0t3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -36,11 +150,12 @@ bone_idx = 5
 [node name="sa_spring" parent="Armature/Skeleton3D/sa_chasis/sa_chasis" parent_id_path=PackedInt32Array(332826198) index="0" unique_id=87054729]
 unique_name_in_owner = true
 transform = Transform3D(1.0000001, 7.450581e-09, -4.0941813e-08, 7.450581e-09, 0.9999995, -9.313226e-10, -2.220695e-07, 1.8626451e-09, 0.9999991, -4.41093e-05, 0.0001033672, -0.013831915)
-surface_material_override/0 = SubResource("ShaderMaterial_6c0t3")
+surface_material_override/0 = SubResource("ShaderMaterial_lmvvn")
 
 [node name="Marker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="3" unique_id=2078438308]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, -2.5410988e-21, 0, 1, 0, -3.5527137e-15, 0, 1, -0.00012900165, -1.0426447e-08, 0.043528896)
+gizmo_extents = 0.05
 
 [node name="LookAtModifier3D3" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="4" unique_id=1829708600]
 transform = Transform3D(-5.9604643e-10, -0.01, 1.0658141e-16, -2.3841857e-09, 5.960467e-10, -0.01, 0.01, -1.1920928e-09, -1.7881393e-09, -0.00011819589, 6.61236e-05, -0.002086646)

@@ -468,7 +468,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2010588, 0.13525757)
 [node name="Wheels" type="Node3D" parent="." unique_id=1355436079]
 unique_name_in_owner = true
 
-[node name="Wheel_FL" type="RayCast3D" parent="Wheels" unique_id=2132687944]
+[node name="shock_absorber_1" parent="Wheels" unique_id=208807058 instance=ExtResource("9_almaq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.23329738, 0.22092986, -1.0657092)
+
+[node name="shock_absorber_2" parent="Wheels" unique_id=1039676182 instance=ExtResource("9_almaq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.23805764, 0.22092986, 0.72324884)
+
+[node name="shock_absorber_3" parent="Wheels" unique_id=684012132 instance=ExtResource("9_almaq")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, 0.234, 0.22074297, -1.0657091)
+
+[node name="shock_absorber_4" parent="Wheels" unique_id=1064626984 instance=ExtResource("9_almaq")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, 0.238, 0.22074297, 0.72324884)
+
+[node name="Wheel_FL" type="RayCast3D" parent="Wheels" unique_id=2132687944 node_paths=PackedStringArray("_shock_absorber")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44163394, 0.35474297, -1.0657092)
 target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
@@ -478,16 +490,14 @@ wheel_radius = 0.211
 suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
+_shock_absorber = NodePath("../shock_absorber_1")
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_FL" unique_id=615996651 instance=ExtResource("2_xy0t8")]
 
 [node name="Brake" parent="Wheels/Wheel_FL/vaz-2101_wheel" unique_id=603665377 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
 
-[node name="shock_absorber_1" parent="Wheels/Wheel_FL" unique_id=208807058 instance=ExtResource("9_almaq")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.20833656, -0.13381311, 0)
-
-[node name="Wheel_RL" type="RayCast3D" parent="Wheels" unique_id=1259052274]
+[node name="Wheel_RL" type="RayCast3D" parent="Wheels" unique_id=1259052274 node_paths=PackedStringArray("_shock_absorber")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44163394, 0.35474297, 0.72324884)
 target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
@@ -496,16 +506,14 @@ wheel_radius = 0.211
 suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
+_shock_absorber = NodePath("../shock_absorber_2")
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_RL" unique_id=598497092 instance=ExtResource("2_xy0t8")]
 
 [node name="Brake" parent="Wheels/Wheel_RL/vaz-2101_wheel" unique_id=1292121028 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
 
-[node name="shock_absorber_1" parent="Wheels/Wheel_RL" unique_id=1039676182 instance=ExtResource("9_almaq")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.2035763, -0.13381311, 0)
-
-[node name="Wheel_FR" type="RayCast3D" parent="Wheels" unique_id=931816180]
+[node name="Wheel_FR" type="RayCast3D" parent="Wheels" unique_id=931816180 node_paths=PackedStringArray("_shock_absorber")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, -1.0657092)
 target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
@@ -515,16 +523,14 @@ wheel_radius = 0.211
 suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
+_shock_absorber = NodePath("../shock_absorber_3")
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_FR" unique_id=1067980896 instance=ExtResource("2_xy0t8")]
 
 [node name="Brake" parent="Wheels/Wheel_FR/vaz-2101_wheel" unique_id=483405000 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
 
-[node name="shock_absorber_1" parent="Wheels/Wheel_FR" unique_id=684012132 instance=ExtResource("9_almaq")]
-transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, -0.208, -0.134, 0)
-
-[node name="Wheel_RR" type="RayCast3D" parent="Wheels" unique_id=869956851]
+[node name="Wheel_RR" type="RayCast3D" parent="Wheels" unique_id=869956851 node_paths=PackedStringArray("_shock_absorber")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, 0.72324884)
 target_position = Vector3(0, -0.3, 0)
 script = ExtResource("2_hnaeu")
@@ -533,11 +539,9 @@ wheel_radius = 0.211
 suspension_rest_len = 0.2
 suspension_dump = 2000.0
 spring_force = 40000.0
+_shock_absorber = NodePath("../shock_absorber_4")
 
 [node name="vaz-2101_wheel" parent="Wheels/Wheel_RR" unique_id=1229314473 instance=ExtResource("2_xy0t8")]
 
 [node name="Brake" parent="Wheels/Wheel_RR/vaz-2101_wheel" unique_id=601870036 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
-
-[node name="shock_absorber_1" parent="Wheels/Wheel_RR" unique_id=1064626984 instance=ExtResource("9_almaq")]
-transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, -0.204, -0.134, 0)
