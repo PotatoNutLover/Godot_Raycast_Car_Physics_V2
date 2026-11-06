@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://chrjtmmekjnri"]
+
+[ext_resource type="PackedScene" uid="uid://cfljv76c5qjym" path="res://RaycastCar/Models/shock_absorber_1.fbx" id="1_6c0t3"]
+[ext_resource type="Script" uid="uid://bc2w5twyixuvd" path="res://RaycastCar/Scripts/shock_absorber.gd" id="1_v18jg"]
+[ext_resource type="Shader" uid="uid://gdfeuvrianc3" path="res://RaycastCar/Models/shock_absorber_1.tres" id="2_v18jg"]
+[ext_resource type="Texture2D" uid="uid://cyofup4157x2m" path="res://RaycastCar/Models/shock_absorber_texture.png" id="3_pujv2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c0t3"]
+render_priority = 0
+shader = ExtResource("2_v18jg")
+shader_parameter/Base_Deadzone = 0.05
+shader_parameter/Initial_Height = -0.03
+shader_parameter/Compression = 1.0000000149012
+shader_parameter/Texture2DParameter = ExtResource("3_pujv2")
+
+[node name="shock_absorber_1" unique_id=208807058 instance=ExtResource("1_6c0t3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_v18jg")
+
+[node name="Armature" parent="." index="0" unique_id=358716318]
+transform = Transform3D(1.9106854e-13, -4.371139e-06, -100, -100, -4.371139e-06, 0, -4.371139e-06, 100, -4.371139e-06, 0.2086646, -0.011819601, 0.006612311)
+
+[node name="arm" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="0" unique_id=1104119052]
+unique_name_in_owner = true
+transform = Transform3D(0.99999845, 0.0016276017, 2.782908e-07, 2.7829077e-07, -1.1920927e-07, -1, -0.0016276016, 0.99999857, -1.1920928e-07, -0.00020282045, 2.142042e-10, -0.001825383)
+bone_idx = 0
+
+[node name="sa_rod" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="1" unique_id=813175400]
+transform = Transform3D(-0.2325816, -0.9725765, 3.885773e-07, -1.2249824e-06, -1.0639201e-07, -1, 0.9725766, -0.23258163, -1.1661921e-06, -0.00016500076, -2.5557978e-09, 0.021411048)
+bone_idx = 1
+
+[node name="sa_chasis" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="2" unique_id=2010930974]
+transform = Transform3D(0.23258162, 0.97257686, 0, -3.2782555e-07, 0, -1, -0.9725769, 0.23258159, 2.9802322e-07, -0.048141364, -7.804483e-09, 0.009938003)
+bone_idx = 5
+
+[node name="sa_spring" parent="Armature/Skeleton3D/sa_chasis/sa_chasis" parent_id_path=PackedInt32Array(332826198) index="0" unique_id=87054729]
+unique_name_in_owner = true
+transform = Transform3D(1.0000001, 7.450581e-09, -4.0941813e-08, 7.450581e-09, 0.9999995, -9.313226e-10, -2.220695e-07, 1.8626451e-09, 0.9999991, -4.41093e-05, 0.0001033672, -0.013831915)
+surface_material_override/0 = SubResource("ShaderMaterial_6c0t3")
+
+[node name="Marker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="3" unique_id=2078438308]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -2.5410988e-21, 0, 1, 0, -3.5527137e-15, 0, 1, -0.00012900165, -1.0426447e-08, 0.043528896)
+
+[node name="LookAtModifier3D3" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="4" unique_id=1829708600]
+transform = Transform3D(-5.9604643e-10, -0.01, 1.0658141e-16, -2.3841857e-09, 5.960467e-10, -0.01, 0.01, -1.1920928e-09, -1.7881393e-09, -0.00011819589, 6.61236e-05, -0.002086646)
+target_node = NodePath("../Marker3D")
+bone_name = "Arm"
+bone = 0
+forward_axis = 2
+primary_rotation_axis = 2
+use_secondary_rotation = false
+use_angle_limitation = true
+symmetry_limitation = false
+primary_positive_limit_angle = 0.61086524
+primary_positive_damp_threshold = 1.0
+primary_negative_limit_angle = 0.4712389
+primary_negative_damp_threshold = 1.0
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="5" unique_id=1508263912]
+target_node = NodePath("../sa_rod")
+bone_name = "Chasis"
+bone = 5
+forward_axis = 2
+primary_rotation_axis = 2
+
+[node name="LookAtModifier3D2" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(332345761) index="6" unique_id=1625972563]
+target_node = NodePath("../sa_chasis")
+bone_name = "Rod"
+bone = 1
+forward_axis = 2
+primary_rotation_axis = 2

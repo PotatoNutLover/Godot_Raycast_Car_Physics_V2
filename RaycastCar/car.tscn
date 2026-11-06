@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg5sk5yf2idm0" path="res://RaycastCar/СarTransmission.gd" id="3_ib6if"]
 [ext_resource type="Texture2D" uid="uid://daj0ljf0nxqy5" path="res://RaycastCar/Models/vaz-2101_texture.png" id="5_y02qq"]
 [ext_resource type="PackedScene" uid="uid://brja6np7fssag" path="res://RaycastCar/Prefabs/brake.tscn" id="8_o720c"]
+[ext_resource type="PackedScene" uid="uid://chrjtmmekjnri" path="res://RaycastCar/Models/shock_absorber_1.tscn" id="9_almaq"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pkhqk"]
 points = PackedVector3Array(-0.0024513886, 0.014601326, -0.0016483348, -0.006142428, -0.012154767, -0.0016483348, -0.006142428, -0.012154767, -0.0007259026, 0.005852535, -0.014461277, -0.0007259026, 0.0012384311, 0.003528344, 0.0048104073, 0.005391612, 0.013216842, -0.0039557028, -0.0047572213, -0.0038507534, 0.004348762, -0.006142428, 0.0044503696, -0.0039557028, 0.005391612, -0.014461277, -0.0034940573, 0.005391612, 0.014138867, 0.00019738775, -0.005680286, 0.01367641, 0.00019738775, 0.0049294704, -0.0029258372, 0.004348762, -0.005680286, -0.014461277, -0.0034940573, -0.001066182, -0.014926625, 0.00065731676, -0.005219363, 0.013216842, -0.0039557028, -0.0042962986, 0.0058348537, 0.004348762, 0.005852535, -0.008463773, -0.0039557028, 0.006314677, 0.007219338, -0.0011866897, 0.0044685476, 0.007219338, 0.003887117, 0.003545483, -0.005232347, 0.004348762, -0.005219363, -0.014461277, 0.00065731676, 0.005391612, -0.014461277, 0.00065731676, -0.0042962986, 0.014601326, 0.00019738775, -0.0024513886, -0.011232741, -0.0039557028, -0.006142428, 0.00029691786, 0.00019738775, -0.003373234, -0.005232347, 0.004348762, -0.005219363, -0.004772779, 0.003887117, -0.003373234, -0.0024662693, 0.0048104073, 0.0017005731, 0.00675688, 0.004348762, 0.0049294704, 0.0026034277, 0.004348762, 0.005852535, -0.006616831, 0.001118962, 0.004007625, 0.014601326, 0.00019738775, -0.005219363, 0.0053723957, 0.0034254717, 0.003545483, -0.0020038113, 0.0048104073, 0.0049294704, 0.014138867, -0.0030324124, 0.006314677, 0.0049099377, -0.0025707672, -0.006142428, 0.009525848, -0.0007259026, -0.005680286, -0.008463773, -0.0039557028, 0.005852535, 0.011832357, 0.00019738775)
@@ -483,6 +484,9 @@ spring_force = 40000.0
 [node name="Brake" parent="Wheels/Wheel_FL/vaz-2101_wheel" unique_id=603665377 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
 
+[node name="shock_absorber_1" parent="Wheels/Wheel_FL" unique_id=208807058 instance=ExtResource("9_almaq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.20833656, -0.13381311, 0)
+
 [node name="Wheel_RL" type="RayCast3D" parent="Wheels" unique_id=1259052274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44163394, 0.35474297, 0.72324884)
 target_position = Vector3(0, -0.3, 0)
@@ -497,6 +501,9 @@ spring_force = 40000.0
 
 [node name="Brake" parent="Wheels/Wheel_RL/vaz-2101_wheel" unique_id=1292121028 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06015861, 0, 0)
+
+[node name="shock_absorber_1" parent="Wheels/Wheel_RL" unique_id=1039676182 instance=ExtResource("9_almaq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.2035763, -0.13381311, 0)
 
 [node name="Wheel_FR" type="RayCast3D" parent="Wheels" unique_id=931816180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, -1.0657092)
@@ -514,6 +521,9 @@ spring_force = 40000.0
 [node name="Brake" parent="Wheels/Wheel_FR/vaz-2101_wheel" unique_id=483405000 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
 
+[node name="shock_absorber_1" parent="Wheels/Wheel_FR" unique_id=684012132 instance=ExtResource("9_almaq")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, -0.208, -0.134, 0)
+
 [node name="Wheel_RR" type="RayCast3D" parent="Wheels" unique_id=869956851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442, 0.35474297, 0.72324884)
 target_position = Vector3(0, -0.3, 0)
@@ -528,3 +538,6 @@ spring_force = 40000.0
 
 [node name="Brake" parent="Wheels/Wheel_RR/vaz-2101_wheel" unique_id=601870036 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
+
+[node name="shock_absorber_1" parent="Wheels/Wheel_RR" unique_id=1064626984 instance=ExtResource("9_almaq")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, -0.204, -0.134, 0)
