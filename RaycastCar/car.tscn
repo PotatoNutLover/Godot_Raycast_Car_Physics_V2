@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://daj0ljf0nxqy5" path="res://RaycastCar/Models/vaz-2101_texture.png" id="5_y02qq"]
 [ext_resource type="PackedScene" uid="uid://brja6np7fssag" path="res://RaycastCar/Prefabs/brake.tscn" id="8_o720c"]
 [ext_resource type="PackedScene" uid="uid://chrjtmmekjnri" path="res://RaycastCar/Models/shock_absorber_1.tscn" id="9_almaq"]
+[ext_resource type="Texture2D" uid="uid://dd80sh3fjok1n" path="res://RaycastCar/Models/smoke_1_tiled_4.png" id="10_nwy0b"]
+[ext_resource type="Script" uid="uid://nsygwsmb3aaj" path="res://RaycastCar/gpu_particles_3d.gd" id="11_a05uo"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pkhqk"]
 points = PackedVector3Array(-0.0024513886, 0.014601326, -0.0016483348, -0.006142428, -0.012154767, -0.0016483348, -0.006142428, -0.012154767, -0.0007259026, 0.005852535, -0.014461277, -0.0007259026, 0.0012384311, 0.003528344, 0.0048104073, 0.005391612, 0.013216842, -0.0039557028, -0.0047572213, -0.0038507534, 0.004348762, -0.006142428, 0.0044503696, -0.0039557028, 0.005391612, -0.014461277, -0.0034940573, 0.005391612, 0.014138867, 0.00019738775, -0.005680286, 0.01367641, 0.00019738775, 0.0049294704, -0.0029258372, 0.004348762, -0.005680286, -0.014461277, -0.0034940573, -0.001066182, -0.014926625, 0.00065731676, -0.005219363, 0.013216842, -0.0039557028, -0.0042962986, 0.0058348537, 0.004348762, 0.005852535, -0.008463773, -0.0039557028, 0.006314677, 0.007219338, -0.0011866897, 0.0044685476, 0.007219338, 0.003887117, 0.003545483, -0.005232347, 0.004348762, -0.005219363, -0.014461277, 0.00065731676, 0.005391612, -0.014461277, 0.00065731676, -0.0042962986, 0.014601326, 0.00019738775, -0.0024513886, -0.011232741, -0.0039557028, -0.006142428, 0.00029691786, 0.00019738775, -0.003373234, -0.005232347, 0.004348762, -0.005219363, -0.004772779, 0.003887117, -0.003373234, -0.0024662693, 0.0048104073, 0.0017005731, 0.00675688, 0.004348762, 0.0049294704, 0.0026034277, 0.004348762, 0.005852535, -0.006616831, 0.001118962, 0.004007625, 0.014601326, 0.00019738775, -0.005219363, 0.0053723957, 0.0034254717, 0.003545483, -0.0020038113, 0.0048104073, 0.0049294704, 0.014138867, -0.0030324124, 0.006314677, 0.0049099377, -0.0025707672, -0.006142428, 0.009525848, -0.0007259026, -0.005680286, -0.008463773, -0.0039557028, 0.005852535, 0.011832357, 0.00019738775)
@@ -385,6 +387,52 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l4ejl")
 
+[sub_resource type="Curve" id="Curve_req5u"]
+_data = [Vector2(0, 1), 0.0, 0.26331046, 0, 0, Vector2(0.23076925, 0.15625), 0.17287233, -0.20312501, 0, 1, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yp316"]
+curve = SubResource("Curve_req5u")
+
+[sub_resource type="Curve" id="Curve_n77v2"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.22916663), 0.0, 2.7083337, 0, 0, Vector2(0.5038462, 1), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a05uo"]
+curve = SubResource("Curve_n77v2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jv65u"]
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 0, 0.1)
+spread = 11.231
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.59999996
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.79999995
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_a05uo")
+alpha_curve = SubResource("CurveTexture_yp316")
+anim_offset_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kglct"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_nwy0b")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_5xhey"]
+material = SubResource("StandardMaterial3D_kglct")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Skin" id="Skin_n77v2"]
+
 [node name="Car" type="RigidBody3D" unique_id=33558669]
 center_of_mass_mode = 1
 linear_damp = 0.1
@@ -399,13 +447,14 @@ shape = SubResource("ConvexPolygonShape3D_pkhqk")
 unique_name_in_owner = true
 script = ExtResource("2_y02qq")
 
-[node name="CarEngine" type="Node" parent="CarSystems" unique_id=1354201253]
+[node name="CarEngine" type="Node" parent="CarSystems" unique_id=1354201253 node_paths=PackedStringArray("muffler_particle")]
 unique_name_in_owner = true
 script = ExtResource("2_5dsb1")
 rpm_accel_free = 6.0
 rpm_deccel_free = 800.0
 torque_curve = SubResource("Curve_ib6if")
 body_torque_amount = 0.1
+muffler_particle = NodePath("../../MufflerParticles")
 
 [node name="CarTransmission" type="Node" parent="CarSystems" unique_id=195416333]
 unique_name_in_owner = true
@@ -545,3 +594,17 @@ _shock_absorber = NodePath("../shock_absorber_4")
 
 [node name="Brake" parent="Wheels/Wheel_RR/vaz-2101_wheel" unique_id=601870036 instance=ExtResource("8_o720c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059999973, 0, 0)
+
+[node name="MufflerParticles" type="GPUParticles3D" parent="." unique_id=1163100943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20739055, 0.17548418, 1.3772689)
+emitting = false
+amount = 30
+amount_ratio = 0.2
+local_coords = true
+trail_lifetime = 3.7
+process_material = SubResource("ParticleProcessMaterial_jv65u")
+draw_pass_1 = SubResource("QuadMesh_5xhey")
+draw_skin = SubResource("Skin_n77v2")
+script = ExtResource("11_a05uo")
+min_color = Color(1, 1, 1, 1)
+max_color = Color(0.83033526, 0.83033514, 0.83033514, 1)

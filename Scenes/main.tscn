@@ -29,7 +29,8 @@ script = ExtResource("1_jjvhh")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground" unique_id=211707006]
-size = Vector3(200, 1, 200)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.88828, 0, -28.07727)
+size = Vector3(756.07526, 1, 507.5027)
 material = SubResource("StandardMaterial3D_7u77a")
 
 [node name="Ramp" type="CSGBox3D" parent="Ground" unique_id=1918947240]
@@ -79,7 +80,7 @@ show_percentage = false
 unique_name_in_owner = true
 transform = Transform3D(0.99997556, -0.006981259, 9.702136e-11, 0.005363507, 0.7682534, 0.6401236, -0.004468868, -0.64010787, 0.7682721, 0, 2.7988877, -0.0062168837)
 script = ExtResource("5_kry3j")
-default_pos = Vector3(0, 0.091181755, 3.054597)
+default_pos = Vector3(-0.0019265777, -0.18477571, 3.385807)
 default_rot = Vector3(-39.8, 0, 0)
 option_1_pos = Vector3(0, 0.091181755, 3.054597)
 option_1_rot = Vector3(-18.1, -110, 0)
@@ -87,7 +88,7 @@ option_2_pos = Vector3(0.0067972685, -0.18624973, 1.3526609)
 option_2_rot = Vector3(-16.2, -168.9, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1938912669]
-transform = Transform3D(1.0000001, 7.450581e-09, 4.4703484e-08, 3.7252903e-09, 0.97586375, -0.21838138, -5.9604645e-08, 0.21838135, 0.9758636, 0, 0.091181755, 3.054597)
+transform = Transform3D(1.0000001, 8.1490725e-09, 5.7742e-08, 3.7252903e-09, 0.97586346, -0.21838146, -5.9371814e-08, 0.21838135, 0.97586334, -0.0019265777, -0.18477571, 3.385807)
 fov = 80.0
 near = 0.01
 

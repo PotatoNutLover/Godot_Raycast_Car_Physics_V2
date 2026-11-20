@@ -12,6 +12,7 @@ extends Node
 @export var body_torque_freqency: float = 50.0
 @export var body_torque_amount: float = 0.001
 @export var body_torque_thereshold_rpm: float = 2000
+@export var muffler_particle: MufflerParticles
 
 #var final_drive: float = 8.0
 #var gear: float = 3.2
@@ -22,6 +23,9 @@ var target_rpm: float = 0.0
 var transmission: CarTransmission
 
 var _bob_effect_rotation_z_rad: float = 0.0
+
+func _ready() -> void:
+	muffler_particle.start_emit()
 
 func get_drive_force(
 		force_long: float, 
@@ -50,6 +54,7 @@ func get_drive_force(
 		drive_force = torque * throttle * transmission.get_final_ratio() * transmission.efficiency_factor
 		drive_force = drive_force / (wheel_radius * drive_wheels_count)
 	
+	muffler_particle.set_ratio((current_rpm-idle_rpm) / (max_rpm-idle_rpm))
 	return drive_force
 	
 func is_connected_to_transmission(transmission: CarTransmission) -> bool:
